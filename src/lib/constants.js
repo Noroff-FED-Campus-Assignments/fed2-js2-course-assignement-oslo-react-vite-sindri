@@ -8,8 +8,6 @@ export const API_URL =
 
 export const NAVIGATION = [
   { label: "Home", href: "/" },
-  { label: "Profile", href: "/profile" },
-  { label: "Profiles", href: "/profiles" },
-  { label: "Posts", href: "/posts" },
+  { label: "Create", href: "/create" },
   { label: "Login", href: "/login" },
 ];
