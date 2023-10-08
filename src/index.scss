@@ -50,3 +50,11 @@ main {
 footer {
   grid-area: footer;
 }
+
+/*Ny kode*/
+.header-container{
+  display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    
+}

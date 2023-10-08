@@ -6,7 +6,9 @@ function App() {
   return (
     <>
       <header>
-        <Navbar />
+        <div className="header-container">
+          <Navbar />
+        </div>
       </header>
 
       <main>

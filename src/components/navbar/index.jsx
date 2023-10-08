@@ -21,11 +21,11 @@ export default function Header() {
   };
   return (
     <>
-      <FontAwesomeIcon icon={faMagnifyingGlass} />
+      <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
       <div>Logo</div>
       <nav>
         <div onClick={toggleMenu}>
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faBars} size="2x" />
         </div>
         {showMenuItems()}
       </nav>
