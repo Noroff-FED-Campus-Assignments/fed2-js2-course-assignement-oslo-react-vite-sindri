@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  // color: rgba(255, 255, 255, 0.87);
+  // background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,6 +55,32 @@ footer {
 .header-container{
   display: grid;
     grid-template-columns: auto auto auto;
-    text-align: center;
-    
+    ul{
+      position: absolute;
+      background-color: white;
+    }
+    li{
+      list-style-type: none;
+      padding: 12px 16px;
+    }
+    svg{
+      margin-top: 30px;
+    }
+    .magnify{
+      margin-left: 10px;
+    }
+    .logo{
+      font-family: 'Black Ops One', cursive;
+      font-size: 64px;
+      -webkit-text-fill-color: white; 
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black;
+      text-align: center;
+     }
+
+     .bars{
+      text-align: right;
+      margin-right: 10px;
+     }
+
 }
