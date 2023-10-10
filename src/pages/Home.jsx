@@ -46,7 +46,8 @@ export default function HomePage() {
 
         if (searchWord) {
           const filtered = data.filter((post) => {
-            if (post.title.includes(searchWord)) return true;
+            if (post.title.toLowerCase().includes(searchWord.toLowerCase()))
+              return true;
           });
           setPosts(filtered);
         } else {
