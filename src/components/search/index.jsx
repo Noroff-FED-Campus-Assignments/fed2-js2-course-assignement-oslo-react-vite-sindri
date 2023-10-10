@@ -1,7 +1,15 @@
-export default function Search() {
+export default function Search({ onSearch }) {
+  const performSearch = (event) => {
+    event.preventDefault();
+    console.log(event.target[0].value);
+    onSearch(event.target[0].value);
+  };
   return (
     <div className="search-field">
-      <input type="search" placeholder="Search..." />
+      <form onSubmit={performSearch}>
+        <input type="search" placeholder="Search..." />
+        <button>Search</button>
+      </form>
     </div>
   );
 }

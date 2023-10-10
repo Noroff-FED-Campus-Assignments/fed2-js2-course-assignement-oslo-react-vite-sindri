@@ -53,7 +53,7 @@ footer {
 /*Ny kode*/
 .header-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 50px auto;
   ul {
     position: absolute;
     background-color: #666;
@@ -97,7 +97,6 @@ footer {
   }
 }
 .search-field {
-  background-color: #666;
   text-align: center;
   padding: 30px 0;
   input {
@@ -107,6 +106,7 @@ footer {
 }
 @media screen and (min-width: 768px) {
   .header-container {
+    grid-template-columns: 250px auto;
     ul {
       background-color: #fff;
       position: static;

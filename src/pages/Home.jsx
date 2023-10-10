@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../lib/constants";
 import Post from "../components/posts/postUi";
 import "../components/posts/index.scss";
+import Search from "../components/search";
 /**
  * @typedef {import('../lib/types.js').PostModel} Post
  */
@@ -15,6 +16,7 @@ export default function HomePage() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -42,7 +44,14 @@ export default function HomePage() {
 
         const data = await response.json();
 
-        setPosts(data);
+        if (searchWord) {
+          const filtered = data.filter((post) => {
+            if (post.title.includes(searchWord)) return true;
+          });
+          setPosts(filtered);
+        } else {
+          setPosts(data);
+        }
 
         console.log(posts);
       } catch (error) {
@@ -53,7 +62,11 @@ export default function HomePage() {
     };
 
     fetchPosts();
-  }, []);
+  }, [searchWord]);
+
+  const onSearch = (s) => {
+    setSearchWord(s);
+  };
 
   if (isLoading) return <h1>Loading...</h1>;
 
@@ -62,7 +75,7 @@ export default function HomePage() {
   return (
     <>
       <h1>Index/ Home Page</h1>
-
+      <Search onSearch={onSearch} />
       <section className="posts">
         {posts.map(({ id, title, media, body }) => (
           <Post key={id} title={title} image={media} body={body} />

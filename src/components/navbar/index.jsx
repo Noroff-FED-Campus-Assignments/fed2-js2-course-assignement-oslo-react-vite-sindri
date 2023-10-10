@@ -3,7 +3,6 @@ import { NAVIGATION } from "../../lib/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import Search from "../search";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -23,9 +22,7 @@ export default function Header() {
       ));
     }
   };
-  const toggleSearch = () => {
-    setSearchOpen(!searchOpen);
-  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -35,9 +32,6 @@ export default function Header() {
       {isTabletOrMobile && (
         <>
           <div className="header-container">
-            <div onClick={toggleSearch} className="magnify">
-              <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-            </div>
             <div className="logo">S</div>
             <nav>
               <div onClick={toggleMenu} className="bars">
@@ -46,7 +40,6 @@ export default function Header() {
               <ul> {showMenuItems()}</ul>
             </nav>
           </div>
-          {searchOpen && <Search />}
         </>
       )}
 
@@ -55,7 +48,7 @@ export default function Header() {
           <div className="logo">
             <span>S</span> <span className="logo-color">indri</span>
           </div>
-          <Search />
+
           <nav>
             <ul> {showMenuItems()}</ul>
           </nav>
