@@ -84,11 +84,13 @@ footer {
     font-family: "Black Ops One", cursive;
     font-size: 64px;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #53a1da;
     text-align: center;
   }
-
+  .logo-color {
+    -webkit-text-fill-color: #53a1da;
+  }
   .bars {
     text-align: right;
     margin-right: 10px;
@@ -101,5 +103,27 @@ footer {
   input {
     height: 38px;
     border-radius: 4px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-container {
+    ul {
+      background-color: #fff;
+      position: static;
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
+    li {
+      color: black;
+    }
+    a:visited {
+      color: black;
+    }
+  }
+  .search-field {
+    background-color: #fff;
+  }
+  input {
+    width: 500px;
   }
 }

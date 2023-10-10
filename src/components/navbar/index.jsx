@@ -5,12 +5,17 @@ import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Search from "../search";
 
+import { useMediaQuery } from "react-responsive";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isLargerThanTablet = useMediaQuery({ query: "(min-width: 768px)" });
+
   const showMenuItems = () => {
-    if (menuOpen) {
+    if (menuOpen || isLargerThanTablet) {
       return NAVIGATION.map((item) => (
         <li key={item.href}>
           <Link to={item.href}>{item.label}</Link>
@@ -27,19 +32,35 @@ export default function Header() {
 
   return (
     <>
-      <div className="header-container">
-        <div onClick={toggleSearch} className="magnify">
-          <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
-        </div>
-        <div className="logo">S</div>
-        <nav>
-          <div onClick={toggleMenu} className="bars">
-            <FontAwesomeIcon icon={faBars} size="2x" />
+      {isTabletOrMobile && (
+        <>
+          <div className="header-container">
+            <div onClick={toggleSearch} className="magnify">
+              <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
+            </div>
+            <div className="logo">S</div>
+            <nav>
+              <div onClick={toggleMenu} className="bars">
+                <FontAwesomeIcon icon={faBars} size="2x" />
+              </div>
+              <ul> {showMenuItems()}</ul>
+            </nav>
           </div>
-          <ul> {showMenuItems()}</ul>
-        </nav>
-      </div>
-      {searchOpen && <Search />}
+          {searchOpen && <Search />}
+        </>
+      )}
+
+      {isLargerThanTablet && (
+        <div className="header-container">
+          <div className="logo">
+            <span>S</span> <span className="logo-color">indri</span>
+          </div>
+          <Search />
+          <nav>
+            <ul> {showMenuItems()}</ul>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
