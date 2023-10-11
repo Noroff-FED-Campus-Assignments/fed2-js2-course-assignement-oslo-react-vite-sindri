@@ -7,6 +7,7 @@ import ProfilePage from "./pages/Profile";
 import PostsPage from "./pages/Posts";
 import PostPage from "./pages/Post";
 import Root from "./App";
+import CreatePage from "./pages/Create";
 
 const rootRoute = new RootRoute({
   component: Root,
@@ -61,6 +62,11 @@ const postRoute = new Route({
   path: "/posts/$postId",
   component: PostPage,
 });
+const createRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/create",
+  component: CreatePage,
+});
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -71,6 +77,7 @@ const routeTree = rootRoute.addChildren([
   postsRoute,
   postRoute,
   registerRoute,
+  createRoute,
 ]);
 
 export const router = new Router({ routeTree });
