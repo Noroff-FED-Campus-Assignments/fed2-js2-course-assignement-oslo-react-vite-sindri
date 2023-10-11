@@ -3,6 +3,7 @@ import { API_URL } from "../lib/constants";
 import Post from "../components/posts/postUi";
 import "../components/posts/index.scss";
 import Search from "../components/search";
+import Filters from "../components/filters/Filters";
 /**
  * @typedef {import('../lib/types.js').PostModel} Post
  */
@@ -17,6 +18,7 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,6 +31,7 @@ export default function HomePage() {
         url.searchParams.append("_author", "true");
         url.searchParams.append("_comments", "true");
         url.searchParams.append("_reactions", "true");
+        url.searchParams.append("_active", "true");
 
         const response = await fetch(url, {
           headers: {
@@ -43,6 +46,9 @@ export default function HomePage() {
         }
 
         const data = await response.json();
+        const postsWithContent = data.filter((post) => {
+          return post.media || post.title || post.body;
+        });
 
         if (searchWord) {
           const filtered = data.filter((post) => {
@@ -51,7 +57,7 @@ export default function HomePage() {
           });
           setPosts(filtered);
         } else {
-          setPosts(data);
+          setPosts(postsWithContent);
         }
 
         console.log(posts);
@@ -76,10 +82,11 @@ export default function HomePage() {
   return (
     <>
       <h1>Index/ Home Page</h1>
+      <Filters />
       <Search onSearch={onSearch} />
       <section className="posts">
         {posts.map(({ id, title, media, body }) => (
-          <Post key={id} title={title} image={media} body={body} />
+          <Post key={id} href={id} title={title} image={media} body={body} />
         ))}
       </section>
     </>
