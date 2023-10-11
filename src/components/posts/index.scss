@@ -1,5 +1,5 @@
 .posts {
-  max-width: 1280px;
+  max-width: 520px;
   margin: 0 auto;
   display: grid;
   gap: 1.6rem;
@@ -16,15 +16,16 @@
 
   .post__title {
     font-size: 1.5rem;
-    width: 20rem;
     overflow-wrap: break-word;
   }
   .post__img-container {
+    display: flex;
+    justify-content: center;
     width: 100%;
     .post__img-img {
       object-fit: cover;
       border-radius: 1rem;
-      max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -33,14 +34,14 @@
   }
 }
 
-@media (min-width: 600px) {
-  .posts {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+// @media (min-width: 600px) {
+//   .posts {
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// }
 
-@media (min-width: 900px) {
-  .posts {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+// @media (min-width: 900px) {
+//   .posts {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
