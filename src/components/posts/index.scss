@@ -8,20 +8,24 @@
 .post {
   display: flex;
   flex-direction: column;
+  // max-width: 100%;
   margin-top: 1rem;
   margin-inline: 10px;
   background-color: rgb(228, 222, 222);
   color: rgb(40, 40, 40);
   border-radius: 1rem;
+  padding-bottom: 1rem;
 
   .post__title {
     font-size: 1.5rem;
     overflow-wrap: break-word;
+    padding: 1rem 0rem;
   }
   .post__img-container {
     display: flex;
     justify-content: center;
     width: 100%;
+
     .post__img-img {
       object-fit: cover;
       border-radius: 1rem;
@@ -32,6 +36,8 @@
   .post-link {
     text-decoration: none;
     color: inherit;
+    // margin: inherit;
+    // max-width: 100%;
   }
 
   .post__text {
