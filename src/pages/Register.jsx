@@ -62,36 +62,42 @@ function RegisterForm() {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 align-middle">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
-            Register
-          </h2>
-        </div>
-        <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
-          <label
-            htmlFor="name"
-            className="block text-l font-medium leading-6 text-gray-900"
-          >
-            Name
-          </label>
-
-          <div className="flex items-center justify-between">
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              required
-              defaultValue={`RandomUser_${Math.floor(
-                Math.random() * 10000000
-              )}`}
-              className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
+      {" "}
+      <form
+        className="space-y-8"
+        action="/profile"
+        method="#"
+        onSubmit={handleOnSubmit}
+      >
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 align-middle">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
+              Register
+            </h2>
           </div>
-        </div>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-8" action="/profile" method="#">
+          <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
+            <label
+              htmlFor="name"
+              className="block text-l font-medium leading-6 text-gray-900"
+            >
+              Name
+            </label>
+
+            <div className="flex items-center justify-between">
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                required
+                defaultValue={`RandomUser_${Math.floor(
+                  Math.random() * 10000000
+                )}`}
+                className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <div>
               <div className="flex items-start">
                 <label
@@ -111,7 +117,7 @@ function RegisterForm() {
                   required
                   defaultValue={`${Math.floor(
                     Math.random() * 10000000
-                  )}stud.noroff.no`}
+                  )}@stud.noroff.no`}
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -157,9 +163,9 @@ function RegisterForm() {
                 <a href="/login">Already a user? Sign in here</a>
               </button>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }

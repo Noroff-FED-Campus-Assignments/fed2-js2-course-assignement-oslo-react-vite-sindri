@@ -17,7 +17,6 @@ function LoginForm() {
       navigate({ to: "/" });
     }, 2000);
   };
-
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
@@ -43,7 +42,6 @@ function LoginForm() {
       const data = await res.json();
 
       localStorage.setItem("access_token", data.accessToken);
-      setData(data);
       setIsSuccess(res.ok);
       navigateToHome();
     } catch (error) {
@@ -89,7 +87,7 @@ function LoginForm() {
                   type="email"
                   autoComplete="email"
                   required
-                  defaultValue="firnoroff.nost.last@stud.noroff.no"
+                  defaultValue="first.last@stud.noroff.no"
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
