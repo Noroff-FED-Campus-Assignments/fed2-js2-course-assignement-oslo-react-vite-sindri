@@ -1,6 +1,13 @@
 import "./index.scss";
 import { Link } from "@tanstack/react-router";
-
+/**
+ * Post displaying content for a post, for use in list of multiple posts
+ * @property {number} key - ID of the post
+ * @property {string} title - Title of post
+ * @property {string} media - A url to an image, for src
+ * @property {string} body - Body text of the post
+ * @property {number} href - id used for linking to single post
+ */
 export default function Post({ key, title, image, body, href }) {
   return (
     <div className="post" key={key}>

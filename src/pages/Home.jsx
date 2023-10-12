@@ -46,6 +46,7 @@ export default function HomePage() {
         }
 
         const data = await response.json();
+        // Filters only for the posts with some form of content
         const postsWithContent = data.filter((post) => {
           return post.media || post.title || post.body;
         });

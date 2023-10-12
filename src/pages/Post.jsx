@@ -19,6 +19,7 @@ export default function PostPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         // TIP: Get the ID from the search params in the URL
         const postId = window.location.pathname.split("/")[2];
         const token = localStorage.getItem("access_token");
@@ -34,6 +35,8 @@ export default function PostPage() {
           .then((response) => response.json())
           .then((post) => setPost(post));
 
+=======
+>>>>>>> develop
         // TIP: Set the post in state
       } catch (error) {
         // TIP: Handle errors from the API
@@ -48,10 +51,13 @@ export default function PostPage() {
   return (
     <>
       <h1>{post?.title}</h1>
+<<<<<<< HEAD
       <section>
         <p>{post?.body}</p>
         <img src={post?.media} alt="" />
       </section>
+=======
+>>>>>>> develop
     </>
   );
 }

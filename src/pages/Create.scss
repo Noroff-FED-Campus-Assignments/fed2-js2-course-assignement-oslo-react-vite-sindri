@@ -1,0 +1,20 @@
+.form-container {
+  text-align: center;
+  .input {
+    margin: 16px 0;
+    padding-left: 10px;
+  }
+  input {
+    width: 270px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+  }
+  textarea {
+    width: 270px;
+    height: 100px;
+  }
+  :focus-visible {
+    outline: none;
+  }
+}
