@@ -28,7 +28,17 @@ export default function CreatePage() {
       .then((response) => response.json())
       .then((json) => console.log(json));
   };
-
+  // const previewImage = (event) => {
+  //   var input = event.target;
+  //   var image = document.getElementById("preview");
+  //   if (input.files && input.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       image.src = e.target.result;
+  //     };
+  //     reader.readAsDataURL(input.files[0]);
+  //   }
+  // };
   return (
     <>
       <h1>Create post</h1>
@@ -36,24 +46,29 @@ export default function CreatePage() {
       <form onSubmit={createPost}>
         <div className="form-container">
           <div className="input">
-            <label htmlFor="text">Title</label>
+            <label htmlFor="text">Title:</label>
             <input type="text" required />
           </div>
           <div className="input">
-            <label htmlFor="text">Text</label>
+            <label htmlFor="text">Text:</label>
             <textarea required />
           </div>
           <div className="input">
-            <label htmlFor="text">Url</label>
-            <input type="text" />
+            <label htmlFor="text">Url:</label>
+            <input
+            // type="file"
+            // accept="image/*"
+            // onChange={previewImage(event)}
+            />
           </div>
           <div className="input">
-            <label htmlFor="text">Tag</label>
+            <label htmlFor="text">Tag:</label>
             <input type="text" />
           </div>
           <button>Save</button>
         </div>
       </form>
+      <img id="preview" alt="" />
     </>
   );
 }

@@ -1,5 +1,13 @@
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
 .form-container {
   text-align: center;
+  label {
+    margin-right: 10px;
+    font-size: 20px;
+  }
   .input {
     margin: 16px 0;
     padding-left: 10px;
@@ -13,8 +21,13 @@
   textarea {
     width: 270px;
     height: 100px;
+    vertical-align: top;
   }
   :focus-visible {
     outline: none;
+  }
+  #preview {
+    width: 300px;
+    height: 300px;
   }
 }
