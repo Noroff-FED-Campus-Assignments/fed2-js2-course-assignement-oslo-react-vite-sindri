@@ -1,8 +1,10 @@
 import { API_URL } from "./../lib/constants";
+import { useState } from "react";
 
 import "./Create.scss";
 
 export default function CreatePage() {
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const createPost = (event) => {
     event.preventDefault();
 
@@ -28,17 +30,10 @@ export default function CreatePage() {
       .then((response) => response.json())
       .then((json) => console.log(json));
   };
-  // const previewImage = (event) => {
-  //   var input = event.target;
-  //   var image = document.getElementById("preview");
-  //   if (input.files && input.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function (e) {
-  //       image.src = e.target.result;
-  //     };
-  //     reader.readAsDataURL(input.files[0]);
-  //   }
-  // };
+  const previewImage = (event) => {
+    const imageUrl = event.target.value;
+    setImagePreviewUrl(imageUrl);
+  };
   return (
     <>
       <h1>Create post</h1>
@@ -55,11 +50,7 @@ export default function CreatePage() {
           </div>
           <div className="input">
             <label htmlFor="text">Url:</label>
-            <input
-            // type="file"
-            // accept="image/*"
-            // onChange={previewImage(event)}
-            />
+            <input type="text" onChange={previewImage} />
           </div>
           <div className="input">
             <label htmlFor="text">Tag:</label>
@@ -68,7 +59,7 @@ export default function CreatePage() {
           <button>Save</button>
         </div>
       </form>
-      <img id="preview" alt="" />
+      <img src={imagePreviewUrl} alt="" />
     </>
   );
 }
