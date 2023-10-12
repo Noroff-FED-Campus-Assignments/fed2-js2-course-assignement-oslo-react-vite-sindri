@@ -29,6 +29,7 @@ export default function PostPage() {
           method: "GET",
           headers: {
             Authorization: `Bearer ${accessToken}`,
+            //la inn accesstoken over og alt sluttet funke
           },
         })
           .then((response) => response.json())
