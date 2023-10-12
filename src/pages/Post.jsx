@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Route } from "@tanstack/react-router";
+import { API_URL } from "./../lib/constants";
 
 const initialPostState = {
   title: "No post found",
@@ -12,13 +14,11 @@ const initialPostState = {
  * @see https://docs.noroff.dev/social-endpoints/posts
  */
 export default function PostPage() {
-  const [post, setPost] = useState(initialPostState);
+  const [post, setPost] = useState([initialPostState]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // TIP: Get the ID from the search params in the URL
-        // TIP: Fetch the post from the API using the ID
         // TIP: Set the post in state
       } catch (error) {
         // TIP: Handle errors from the API
@@ -32,10 +32,7 @@ export default function PostPage() {
 
   return (
     <>
-      <h1>A single post</h1>
-      <section>
-        <h2>{post?.title}</h2>
-      </section>
+      <h1>{post?.title}</h1>
     </>
   );
 }
