@@ -16,6 +16,7 @@ function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const navigateToHome = () => {
@@ -46,12 +47,18 @@ function RegisterForm() {
           },
         }
       );
+      const resJSON = await res.json();
 
-      localStorage.setItem("email", email.value);
-      setIsSuccess(res.ok);
-      navigateToHome();
+      if (resJSON.statusCode > 300) {
+        setErrorMessage(resJSON.errors[0].message);
+      } else {
+        localStorage.setItem("email", email.value);
+        setIsSuccess(res.ok);
+        navigateToHome();
+      }
     } catch (error) {
       console.warn("An error occurred", error);
+
       setError(error);
     } finally {
       setIsLoading(false);
@@ -116,7 +123,7 @@ function RegisterForm() {
                   required
                   defaultValue={`${Math.floor(
                     Math.random() * 10000000
-                  )}stud.noroff.no`}
+                  )}@stud.noroff.no`}
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -139,18 +146,19 @@ function RegisterForm() {
                   placeholder="PASSWORD"
                   autoComplete="current-password"
                   required
-                  defaultValue="UzI1NiIsInR5cCI"
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
+
+            {errorMessage && <div>{errorMessage}</div>}
 
             <div>
               <button
                 type="submit"
                 className="flex w-full justify-center w-86 rounded-md bg-blue-300 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
               >
-                Login
+                Register
               </button>
             </div>
 

@@ -8,9 +8,9 @@ import { Link } from "@tanstack/react-router";
  * @property {string} body - Body text of the post
  * @property {number} href - id used for linking to single post
  */
-export default function Post({ key, title, image, body, href }) {
+export default function Post({ title, image, body, href }) {
   return (
-    <div className="post" key={key}>
+    <div className="post">
       <Link className="post-link" to={"posts/" + href}>
         <div className="post__img-container">
           {image ? (
