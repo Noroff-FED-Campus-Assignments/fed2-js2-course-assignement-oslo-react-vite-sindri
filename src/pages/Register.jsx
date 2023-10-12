@@ -27,14 +27,12 @@ function RegisterForm() {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password, name, avatar, banner } = event.target.elements;
+    const { email, password, name } = event.target.elements;
 
     const payload = {
       name: name.value,
       email: email.value,
       password: password.value,
-      avatar: avatar?.value,
-      banner: banner?.value,
     };
 
     try {
