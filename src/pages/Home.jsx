@@ -18,7 +18,6 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
-  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -26,6 +25,7 @@ export default function HomePage() {
         setIsLoading(true);
 
         const accessToken = localStorage.getItem("access_token");
+        const userEmail = localStorage.getItem("user_email");
 
         const url = new URL(`${API_URL}/posts`);
         url.searchParams.append("_author", "true");
