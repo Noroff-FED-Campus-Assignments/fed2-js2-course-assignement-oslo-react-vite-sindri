@@ -1,0 +1,13 @@
+.post {
+  display: grid;
+  grid-template-columns: 350px auto;
+
+  img {
+    max-width: 300px;
+    border-radius: 8px;
+    margin: 10px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+}

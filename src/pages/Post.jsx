@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route } from "@tanstack/react-router";
 import { API_URL } from "./../lib/constants";
+import "./Post.scss";
 
 const initialPostState = {
   title: "No post found",
@@ -47,11 +48,14 @@ export default function PostPage() {
 
   return (
     <>
-      <h1>{post?.title}</h1>
-      <section>
-        <p>{post?.body}</p>
+      <div className="post">
         <img src={post?.media} alt="" />
-      </section>
+        <div>
+          <h1>{post?.title}</h1>
+
+          <p>{post?.body}</p>
+        </div>
+      </div>
     </>
   );
 }
