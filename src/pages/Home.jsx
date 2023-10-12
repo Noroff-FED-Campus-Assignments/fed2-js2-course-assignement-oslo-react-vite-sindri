@@ -4,6 +4,8 @@ import Post from "../components/posts/postUi";
 import "../components/posts/index.scss";
 import Search from "../components/search";
 import Filters from "../components/filters/Filters";
+import { useNavigate } from "@tanstack/react-router";
+
 /**
  * @typedef {import('../lib/types.js').PostModel} Post
  */
@@ -19,14 +21,18 @@ export default function HomePage() {
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
   const [filter, setFilter] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setIsLoading(true);
 
-        // const accessToken = localStorage.getItem("jwt");
-
+        /*  const accessToken = localStorage.getItem("jwt");
+        if (!accessToken) {
+          navigate({ to: "/login" });
+        }
+*/
         const url = new URL(`${API_URL}/posts`);
         url.searchParams.append("_author", "true");
         url.searchParams.append("_comments", "true");
