@@ -20,7 +20,7 @@ function RegisterForm() {
 
   const navigateToHome = () => {
     setTimeout(() => {
-      navigate({ to: "/login" });
+      navigate({ to: "/" });
     }, 2000);
   };
 
@@ -69,29 +69,34 @@ function RegisterForm() {
           </h2>
         </div>
         <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
-          <label
-            htmlFor="name"
-            className="block text-l font-medium leading-6 text-gray-900"
+          <form
+            className="space-y-8"
+            action="/profile"
+            method="#"
+            onSubmit={handleOnSubmit}
           >
-            Name
-          </label>
+            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <label
+                htmlFor="name"
+                className="block text-l font-medium leading-6 text-gray-900"
+              >
+                Name
+              </label>
 
-          <div className="flex items-center justify-between">
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              required
-              defaultValue={`RandomUser_${Math.floor(
-                Math.random() * 10000000
-              )}`}
-              className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-8" action="/profile" method="#">
+              <div className="flex items-center justify-between">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  defaultValue={`RandomUser_${Math.floor(
+                    Math.random() * 10000000
+                  )}`}
+                  className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
             <div>
               <div className="flex items-start">
                 <label
