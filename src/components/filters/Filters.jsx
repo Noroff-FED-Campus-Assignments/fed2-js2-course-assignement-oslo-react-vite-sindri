@@ -1,7 +1,7 @@
 import "./filters.scss";
 import { useState } from "react";
 
-export default function Filters() {
+export default function Filters({ renderFiltered }) {
   const [filters, setFilters] = useState([
     { label: "All posts", active: true, name: "all" },
     { label: "My posts", active: false, name: "my" },
@@ -15,6 +15,7 @@ export default function Filters() {
       };
     });
     setFilters(updatedFilters);
+    renderFiltered();
   };
 
   return (
