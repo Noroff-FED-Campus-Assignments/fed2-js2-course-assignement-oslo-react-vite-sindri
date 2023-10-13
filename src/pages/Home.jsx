@@ -20,11 +20,12 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
+  const [filter, setFilter] = useState("all");
+  const [originalPosts, setOriginalPosts] = useState([]);
 
   const [userEmail, setUserEmail] = useState(null);
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -40,7 +41,6 @@ export default function HomePage() {
         if (!accessToken || accessToken === "undefined") {
           navigate({ to: "/login" });
         }
-
 
         const url = new URL(`${API_URL}/posts`);
         url.searchParams.append("_author", "true");
@@ -63,6 +63,8 @@ export default function HomePage() {
         const postsWithContent = data.filter((post) => {
           return post.media || post.title || post.body;
         });
+
+        setOriginalPosts(data);
 
         if (searchWord) {
           const filtered = data.filter((post) => {
@@ -92,10 +94,25 @@ export default function HomePage() {
 
   if (error) return <h1>Something went wrong! {error?.message}</h1>;
 
+  const updateFilters = function () {
+    const searchParams = new URLSearchParams(window.location.search);
+    const chosenFilter = searchParams.get("filter");
+    console.log("chosen filter: ", chosenFilter);
+
+    if (chosenFilter === "all") {
+      setPosts(originalPosts);
+    } else if (chosenFilter === "my") {
+      const filtered = originalPosts.filter(
+        (post) => post.author.email === userEmail
+      );
+      setPosts(filtered);
+    }
+  };
   return (
     <>
       <h1>Index/ Home Page</h1>
-      <Filters />
+      <h3 className="text-center pt-4 pb-2 text-lg font-semibold">Filters:</h3>
+      <Filters onChange={updateFilters} />
       <Search onSearch={onSearch} />
       <section className="posts">
         {posts.map(({ id, title, media, body, author: { email } }) => {
