@@ -1,8 +1,10 @@
 import { API_URL } from "./../lib/constants";
+import { useState } from "react";
 
 import "./Create.scss";
 
 export default function CreatePage() {
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const createPost = (event) => {
     event.preventDefault();
 
@@ -28,30 +30,38 @@ export default function CreatePage() {
       .then((response) => response.json())
       .then((json) => console.log(json));
   };
-
+  const previewImage = (event) => {
+    const imageUrl = event.target.value;
+    setImagePreviewUrl(imageUrl);
+  };
   return (
     <>
       <h1>Create post</h1>
 
       <form onSubmit={createPost}>
         <div className="form-container">
-          <div className="input">
-            <label htmlFor="text">Title</label>
-            <input type="text" required />
+          <div>
+            <div className="input">
+              <label htmlFor="text">Title:</label>
+              <input type="text" required />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Text:</label>
+              <textarea required />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Url:</label>
+              <input type="text" onChange={previewImage} />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Tag:</label>
+              <input type="text" />
+            </div>
           </div>
-          <div className="input">
-            <label htmlFor="text">Text</label>
-            <textarea required />
+          <div>
+            <img src={imagePreviewUrl} alt="" />
+            <button>Save</button>
           </div>
-          <div className="input">
-            <label htmlFor="text">Url</label>
-            <input type="text" />
-          </div>
-          <div className="input">
-            <label htmlFor="text">Tag</label>
-            <input type="text" />
-          </div>
-          <button>Save</button>
         </div>
       </form>
     </>

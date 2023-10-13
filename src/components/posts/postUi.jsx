@@ -9,6 +9,8 @@ import { useState } from "react";
  * @property {string} media - A url to an image, for src
  * @property {string} body - Body text of the post
  * @property {number} href - id used for linking to single post
+ * @property {number} id - id of post
+ * @property {string} user - email of user to single post
  */
 export default function Post({ key, title, image, body, href, user, id }) {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -129,3 +131,4 @@ export default function Post({ key, title, image, body, href, user, id }) {
     </div>
   );
 }
+
