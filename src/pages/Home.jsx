@@ -18,14 +18,16 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
-
+  const [userEmail, setUserEmail] = useState(null);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         setIsLoading(true);
 
         const accessToken = localStorage.getItem("access_token");
-        const userEmail = localStorage.getItem("user_email");
+        const CurrentUserEmail = localStorage.getItem("user_email");
+        setUserEmail(CurrentUserEmail);
+        console.log("user email", userEmail);
 
         const url = new URL(`${API_URL}/posts`);
         url.searchParams.append("_author", "true");
@@ -54,12 +56,11 @@ export default function HomePage() {
             if (post.title.toLowerCase().includes(searchWord.toLowerCase()))
               return true;
           });
+
           setPosts(filtered);
         } else {
           setPosts(postsWithContent);
         }
-
-        console.log(posts);
       } catch (error) {
         setError(error);
       } finally {
@@ -84,9 +85,20 @@ export default function HomePage() {
       <Filters />
       <Search onSearch={onSearch} />
       <section className="posts">
-        {posts.map(({ id, title, media, body }) => (
-          <Post key={id} href={id} title={title} image={media} body={body} />
-        ))}
+        {posts.map(({ id, title, media, body, author: { email } }) => {
+          const isUserPost = email === userEmail;
+          return (
+            <Post
+              key={id}
+              id={id}
+              href={id}
+              title={title}
+              image={media}
+              body={body}
+              user={isUserPost}
+            />
+          );
+        })}
       </section>
     </>
   );
