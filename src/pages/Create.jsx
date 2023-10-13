@@ -13,6 +13,7 @@ export default function CreatePage() {
     const url = event.target[2].value;
     const tag = event.target[3].value;
     console.log(title, text, url, tag);
+    const accessToken = localStorage.getItem("access_token");
     fetch(`${API_URL}/posts`, {
       method: "POST",
       body: JSON.stringify({
@@ -23,8 +24,7 @@ export default function CreatePage() {
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODEsIm5hbWUiOiJmcm9kbG8iLCJlbWFpbCI6ImZpcnN0Lmxhc3RAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjk2MzI0NjI2fQ.RzasPhTGOgkBdavgA1eObqzH5udnxJWvEksh5iEJ1zE",
+        Authorization: `Bearer ${accessToken}`,
       },
     })
       .then((response) => response.json())
