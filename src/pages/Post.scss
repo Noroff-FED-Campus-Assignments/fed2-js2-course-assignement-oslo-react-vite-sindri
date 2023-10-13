@@ -1,0 +1,22 @@
+.post {
+  img {
+    max-width: 300px;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin: 30px auto;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+  p {
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .post {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
