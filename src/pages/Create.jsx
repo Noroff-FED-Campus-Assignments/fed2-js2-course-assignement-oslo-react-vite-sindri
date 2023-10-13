@@ -40,26 +40,30 @@ export default function CreatePage() {
 
       <form onSubmit={createPost}>
         <div className="form-container">
-          <div className="input">
-            <label htmlFor="text">Title:</label>
-            <input type="text" required />
+          <div>
+            <div className="input">
+              <label htmlFor="text">Title:</label>
+              <input type="text" required />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Text:</label>
+              <textarea required />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Url:</label>
+              <input type="text" onChange={previewImage} />
+            </div>
+            <div className="input">
+              <label htmlFor="text">Tag:</label>
+              <input type="text" />
+            </div>
           </div>
-          <div className="input">
-            <label htmlFor="text">Text:</label>
-            <textarea required />
+          <div>
+            <img src={imagePreviewUrl} alt="" />
+            <button>Save</button>
           </div>
-          <div className="input">
-            <label htmlFor="text">Url:</label>
-            <input type="text" onChange={previewImage} />
-          </div>
-          <div className="input">
-            <label htmlFor="text">Tag:</label>
-            <input type="text" />
-          </div>
-          <button>Save</button>
         </div>
       </form>
-      <img src={imagePreviewUrl} alt="" />
     </>
   );
 }
