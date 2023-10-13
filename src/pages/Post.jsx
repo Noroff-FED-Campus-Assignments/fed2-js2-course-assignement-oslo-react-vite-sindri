@@ -22,14 +22,13 @@ export default function PostPage() {
       try {
         // TIP: Get the ID from the search params in the URL
         const postId = window.location.pathname.split("/")[2];
-        const token = localStorage.getItem("access_token");
+        const accessToken = localStorage.getItem("access_token");
         // TIP: Fetch the post from the API using the ID
 
         fetch(`${API_URL}/posts/${postId}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${accessToken}`,
-            //la inn accesstoken over og alt sluttet funke
           },
         })
           .then((response) => response.json())
@@ -38,6 +37,7 @@ export default function PostPage() {
         // TIP: Set the post in state
       } catch (error) {
         // TIP: Handle errors from the API
+        console.error(error);
       } finally {
         // TIP: Set loading to false
       }
@@ -49,12 +49,12 @@ export default function PostPage() {
   return (
     <>
       <div className="post">
-        <img src={post?.media} alt="" />
         <div>
           <h1>{post?.title}</h1>
 
           <p>{post?.body}</p>
         </div>
+        <img src={post?.media} alt="" />
       </div>
     </>
   );
