@@ -2,7 +2,7 @@
  * Contains form for logging a registered user profile.
  * @see https://docs.noroff.dev/social-endpoints/authentication
  */
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 function LoginForm() {
@@ -43,6 +43,7 @@ function LoginForm() {
       const data = await res.json();
 
       localStorage.setItem("access_token", data.accessToken);
+      localStorage.setItem("user_email", data.email);
       setData(data);
       setIsSuccess(res.ok);
       navigateToHome();
@@ -136,12 +137,13 @@ function LoginForm() {
             </div>
 
             <div className="flex justify-center">
-              <button
-                type="button"
-                className="w-86 w-full rounded-md bg-green-400 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
+              <button type="button"></button>
+              <Link
+                to="/register"
+                className="w-86 w-full rounded-md bg-green-400 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 text-center focus-visible:outline-offset-2 focus-visible:outline-blue-200"
               >
-                <a href="/register">Create a new user</a>
-              </button>
+                Register
+              </Link>
             </div>
           </form>
         </div>

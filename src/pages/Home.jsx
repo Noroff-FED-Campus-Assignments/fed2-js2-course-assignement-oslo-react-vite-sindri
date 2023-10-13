@@ -20,7 +20,6 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchWord, setSearchWord] = useState("");
-  const [filter, setFilter] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,11 +27,11 @@ export default function HomePage() {
       try {
         setIsLoading(true);
 
-        /*  const accessToken = localStorage.getItem("jwt");
-        if (!accessToken) {
+        const accessToken = localStorage.getItem("access_token");
+        if (!accessToken || accessToken === "undefined") {
           navigate({ to: "/login" });
         }
-*/
+
         const url = new URL(`${API_URL}/posts`);
         url.searchParams.append("_author", "true");
         url.searchParams.append("_comments", "true");
@@ -41,9 +40,7 @@ export default function HomePage() {
 
         const response = await fetch(url, {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODEsIm5hbWUiOiJmcm9kbG8iLCJlbWFpbCI6ImZpcnN0Lmxhc3RAc3R1ZC5ub3JvZmYubm8iLCJhdmF0YXIiOm51bGwsImJhbm5lciI6bnVsbCwiaWF0IjoxNjk2MzI0NjI2fQ.RzasPhTGOgkBdavgA1eObqzH5udnxJWvEksh5iEJ1zE",
-            // `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
@@ -66,8 +63,6 @@ export default function HomePage() {
         } else {
           setPosts(postsWithContent);
         }
-
-        console.log(posts);
       } catch (error) {
         setError(error);
       } finally {

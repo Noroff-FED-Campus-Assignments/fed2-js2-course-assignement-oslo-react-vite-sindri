@@ -16,11 +16,12 @@ function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const navigateToHome = () => {
     setTimeout(() => {
-      navigate({ to: "/login" });
+      navigate({ to: "/" });
     }, 2000);
   };
 
@@ -46,12 +47,18 @@ function RegisterForm() {
           },
         }
       );
+      const resJSON = await res.json();
 
-      localStorage.setItem("email", email.value);
-      setIsSuccess(res.ok);
-      navigateToHome();
+      if (resJSON.statusCode > 300) {
+        setErrorMessage(resJSON.errors[0].message);
+      } else {
+        localStorage.setItem("email", email.value);
+        setIsSuccess(res.ok);
+        navigateToHome();
+      }
     } catch (error) {
       console.warn("An error occurred", error);
+
       setError(error);
     } finally {
       setIsLoading(false);
@@ -69,29 +76,34 @@ function RegisterForm() {
           </h2>
         </div>
         <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
-          <label
-            htmlFor="name"
-            className="block text-l font-medium leading-6 text-gray-900"
+          <form
+            className="space-y-8"
+            action="/profile"
+            method="#"
+            onSubmit={handleOnSubmit}
           >
-            Name
-          </label>
+            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <label
+                htmlFor="name"
+                className="block text-l font-medium leading-6 text-gray-900"
+              >
+                Name
+              </label>
 
-          <div className="flex items-center justify-between">
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              required
-              defaultValue={`RandomUser_${Math.floor(
-                Math.random() * 10000000
-              )}`}
-              className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-8" action="/profile" method="#">
+              <div className="flex items-center justify-between">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  defaultValue={`RandomUser_${Math.floor(
+                    Math.random() * 10000000
+                  )}`}
+                  className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
             <div>
               <div className="flex items-start">
                 <label
@@ -111,7 +123,7 @@ function RegisterForm() {
                   required
                   defaultValue={`${Math.floor(
                     Math.random() * 10000000
-                  )}stud.noroff.no`}
+                  )}@stud.noroff.no`}
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-start text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-600 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -134,18 +146,19 @@ function RegisterForm() {
                   placeholder="PASSWORD"
                   autoComplete="current-password"
                   required
-                  defaultValue="UzI1NiIsInR5cCI"
                   className="block w-full rounded-md border-2 border-gray-300 py-2.5 text-gray-900 shadow-sm ring-2 ring-gray-300 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
+
+            {errorMessage && <div>{errorMessage}</div>}
 
             <div>
               <button
                 type="submit"
                 className="flex w-full justify-center w-86 rounded-md bg-blue-300 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
               >
-                Login
+                Register
               </button>
             </div>
 
