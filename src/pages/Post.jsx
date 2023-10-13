@@ -46,6 +46,17 @@ export default function PostPage() {
     fetchData();
   }, []);
 
+  const deletePost = () => {
+    const accessToken = localStorage.getItem("access_token");
+    fetch(`${API_URL}/posts/${post.id}`, {
+      method: "Delete",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }).then((response) => {
+      console.log(response);
+    });
+  };
   return (
     <>
       <div className="post">
@@ -55,6 +66,15 @@ export default function PostPage() {
           <p>{post?.body}</p>
         </div>
         <img src={post?.media} alt="" />
+
+        <div className="center">
+          <button>Edit</button>
+        </div>
+        <div className="center">
+          <button className="delete-button" onClick={deletePost}>
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

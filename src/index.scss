@@ -53,7 +53,12 @@ main {
 footer {
   grid-area: footer;
 }
-
+button {
+  background: #53a1da;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 30px;
+}
 /*Ny kode*/
 .header-container {
   display: grid;
