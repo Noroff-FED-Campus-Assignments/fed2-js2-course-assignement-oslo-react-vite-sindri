@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Route } from "@tanstack/react-router";
+import { Link, Route } from "@tanstack/react-router";
 import { API_URL } from "./../lib/constants";
 import "./Post.scss";
-
+import { useNavigate } from "@tanstack/react-router";
 const initialPostState = {
   title: "No post found",
   body: "Nothing to see here",
@@ -16,7 +16,7 @@ const initialPostState = {
  */
 export default function PostPage() {
   const [post, setPost] = useState([initialPostState]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,6 +55,9 @@ export default function PostPage() {
       },
     }).then((response) => {
       console.log(response);
+      if (response.status < 300) {
+        navigate({ to: "/" });
+      }
     });
   };
   return (
@@ -68,7 +71,9 @@ export default function PostPage() {
         <img src={post?.media} alt="" />
 
         <div className="center">
-          <button>Edit</button>
+          <Link className="button" to={`/edit/${post.id}`}>
+            Edit
+          </Link>
         </div>
         <div className="center">
           <button className="delete-button" onClick={deletePost}>

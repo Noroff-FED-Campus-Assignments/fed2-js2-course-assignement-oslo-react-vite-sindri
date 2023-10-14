@@ -53,7 +53,8 @@ main {
 footer {
   grid-area: footer;
 }
-button {
+button,
+.button {
   background: #53a1da;
   padding: 10px 20px;
   border-radius: 4px;
