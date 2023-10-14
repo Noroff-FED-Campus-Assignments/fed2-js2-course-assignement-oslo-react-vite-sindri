@@ -1,12 +1,13 @@
 import { API_URL } from "../lib/constants";
 import "./Create.scss";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "@tanstack/react-router";
 export default function EditPage() {
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [post, setPost] = useState({});
   const [showEdit, setShowEdit] = useState(false);
   const postId = window.location.pathname.split("/")[2];
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,9 +61,11 @@ export default function EditPage() {
         "Content-type": "application/json; charset=UTF-8",
         Authorization: `Bearer ${accessToken}`,
       },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    }).then((response) => {
+      if (response.status < 300) {
+        navigate({ to: "/" });
+      }
+    });
   };
   const previewImage = (event) => {
     const imageUrl = event.target.value;
