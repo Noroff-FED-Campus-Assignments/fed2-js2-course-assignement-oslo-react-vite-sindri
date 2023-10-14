@@ -2,8 +2,9 @@ import { API_URL } from "./../lib/constants";
 import { useState } from "react";
 
 import "./Create.scss";
-
+import { useNavigate } from "@tanstack/react-router";
 export default function CreatePage() {
+  const navigate = useNavigate();
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const createPost = (event) => {
     event.preventDefault();
@@ -14,6 +15,7 @@ export default function CreatePage() {
     const tag = event.target[3].value;
     console.log(title, text, url, tag);
     const accessToken = localStorage.getItem("access_token");
+
     fetch(`${API_URL}/posts`, {
       method: "POST",
       body: JSON.stringify({
@@ -26,9 +28,12 @@ export default function CreatePage() {
         "Content-type": "application/json; charset=UTF-8",
         Authorization: `Bearer ${accessToken}`,
       },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
+    }).then((response) => {
+      console.log(response.status);
+      if (response.status < 300) {
+        navigate({ to: "/" });
+      }
+    });
   };
   const previewImage = (event) => {
     const imageUrl = event.target.value;
