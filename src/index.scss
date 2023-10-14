@@ -60,6 +60,7 @@ button,
   border-radius: 4px;
   margin-top: 30px;
 }
+
 /*Ny kode*/
 .header-container {
   display: grid;
@@ -90,7 +91,7 @@ button,
     margin-left: 10px;
   }
 
-  .logo {
+  .logo a {
     font-family: "Black Ops One", cursive;
     font-size: 64px;
     -webkit-text-fill-color: white;

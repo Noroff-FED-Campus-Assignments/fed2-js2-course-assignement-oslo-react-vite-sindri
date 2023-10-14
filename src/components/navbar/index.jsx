@@ -32,7 +32,9 @@ export default function Header() {
       {isTabletOrMobile && (
         <>
           <div className="header-container">
-            <div className="logo">S</div>
+            <Link to="/" className="logo">
+              S
+            </Link>
             <nav>
               <div onClick={toggleMenu} className="bars">
                 <FontAwesomeIcon icon={faBars} size="2x" />
@@ -46,7 +48,9 @@ export default function Header() {
       {isLargerThanTablet && (
         <div className="header-container">
           <div className="logo">
-            <span>S</span> <span className="logo-color">indri</span>
+            <Link to="/">
+              <span>S</span> <span className="logo-color">indri</span>
+            </Link>
           </div>
 
           <nav>
