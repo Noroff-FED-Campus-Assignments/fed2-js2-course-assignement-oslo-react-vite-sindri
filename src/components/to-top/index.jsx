@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import "./toTop.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-
+/**
+ * to top button that shows up on scroll, and scrolls the user to top when clicked
+ */
 export default function ToTopBtn() {
   const [isVisible, setIsVisible] = useState(false);
 
