@@ -9,6 +9,7 @@ import PostPage from "./pages/Post";
 import Root from "./App";
 import CreatePage from "./pages/Create";
 import EditPage from "./pages/Edit";
+import SignoutPage from "./pages/Signout";
 
 const rootRoute = new RootRoute({
   component: Root,
@@ -74,6 +75,12 @@ const createRoute = new Route({
   component: CreatePage,
 });
 
+const signoutRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/signout",
+  component: SignoutPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   loginRoute,
@@ -85,6 +92,7 @@ const routeTree = rootRoute.addChildren([
   registerRoute,
   createRoute,
   editRoute,
+  signoutRoute,
 ]);
 
 export const router = new Router({ routeTree });

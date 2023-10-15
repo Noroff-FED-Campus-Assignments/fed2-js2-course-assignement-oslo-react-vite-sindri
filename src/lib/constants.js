@@ -9,5 +9,5 @@ export const API_URL =
 export const NAVIGATION = [
   { label: "Home", href: "/" },
   { label: "Create", href: "/create" },
-  { label: "Login", href: "/login" },
+  { label: "Sign out", href: "/signout" },
 ];

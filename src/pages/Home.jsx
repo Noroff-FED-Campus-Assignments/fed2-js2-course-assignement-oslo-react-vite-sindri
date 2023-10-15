@@ -40,6 +40,7 @@ export default function HomePage() {
 
         if (!accessToken || accessToken === "undefined") {
           navigate({ to: "/login" });
+          return;
         }
 
         const url = new URL(`${API_URL}/posts`);
