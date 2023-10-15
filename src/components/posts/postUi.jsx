@@ -31,10 +31,12 @@ export default function Post({
   const [bodyText, setBodyText] = useState("");
   const [isLiked, setIsLiked] = useState(false);
 
+  // To toggle open the edit form
   const handleOnOpenEdit = function () {
     setIsEditing((prev) => !prev);
   };
 
+  // sends the request for the edit, and updates the posts locally to reflect the new edits
   const handleOnSubmitEdit = function (e) {
     e.preventDefault();
     const accessToken = localStorage.getItem("access_token");
@@ -58,6 +60,7 @@ export default function Post({
     setTitleText(newTitle);
   };
 
+  // sends delete request with the id of the post to be deleted
   const handleOnDelete = async function (e) {
     const accessToken = localStorage.getItem("access_token");
     const id = e.target.id;
@@ -81,23 +84,19 @@ export default function Post({
     }
   };
 
+  // sends a request when reacting to a post, and changes the number locally
   const handleOnLike = async function (e) {
     try {
-      const accessToken = await localStorage.getItem("access_token");
-      console.log(accessToken);
+      const accessToken = localStorage.getItem("access_token");
       const id = e.target.id;
       const emoji = "👍";
       setIsLiked(true);
-      const data = await fetch(
-        `${API_URL}/posts/${id}/react/${encodeURIComponent(emoji)}`,
-        {
-          method: "PUT",
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }
-      );
-      console.log(data);
+      await fetch(`${API_URL}/posts/${id}/react/${encodeURIComponent(emoji)}`, {
+        method: "PUT",
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
     } catch (error) {
-      console.log(error);
+      window.alert("hello");
     }
   };
 
@@ -167,14 +166,16 @@ export default function Post({
         </div>
       ) : (
         <div className="post__text post__edit-section">
-          <button
-            id={id}
-            className={isLiked ? "post__like inactive" : "post__like"}
-            onClick={handleOnLike}
-          >
-            Like 👍
-            <span name="likes-number">{isLiked ? likes + 1 : likes}</span>
-          </button>
+          {!isDeleted ? (
+            <button
+              id={id}
+              className={isLiked ? "post__like inactive" : "post__like"}
+              onClick={handleOnLike}
+            >
+              Like 👍
+              <span name="likes-number">{isLiked ? likes + 1 : likes}</span>
+            </button>
+          ) : null}
         </div>
       )}
     </div>
