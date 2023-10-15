@@ -11,12 +11,25 @@ import { useState } from "react";
  * @property {number} href - id used for linking to single post
  * @property {number} id - id of post
  * @property {string} user - email of user to single post
+ * @property {number} likes - number of likes for a post
+ *
+ * @author Hallvard Benan
  */
-export default function Post({ key, title, image, body, href, user, id }) {
+export default function Post({
+  key,
+  title,
+  image,
+  body,
+  href,
+  user,
+  id,
+  likes,
+}) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [titleText, setTitleText] = useState("");
   const [bodyText, setBodyText] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleOnOpenEdit = function () {
     setIsEditing((prev) => !prev);
@@ -68,10 +81,30 @@ export default function Post({ key, title, image, body, href, user, id }) {
     }
   };
 
+  const handleOnLike = async function (e) {
+    try {
+      const accessToken = await localStorage.getItem("access_token");
+      console.log(accessToken);
+      const id = e.target.id;
+      const emoji = "👍";
+      setIsLiked(true);
+      const data = await fetch(
+        `${API_URL}/posts/${id}/react/${encodeURIComponent(emoji)}`,
+        {
+          method: "PUT",
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const titleToUse = titleText ? titleText : title;
   const bodyToUse = bodyText ? bodyText : body;
   return isEditing ? (
-    <form className="editing post" id={id} onSubmit={handleOnSubmitEdit}>
+    <form className="editing feed-post" id={id} onSubmit={handleOnSubmitEdit}>
       <div className="post__text">
         <label htmlFor="title">Title:</label>
         <input
@@ -98,7 +131,7 @@ export default function Post({ key, title, image, body, href, user, id }) {
       </button>
     </form>
   ) : (
-    <div className={`post ${isDeleted ? "inactive" : ""}`} key={key}>
+    <div className={`feed-post ${isDeleted ? "inactive" : ""}`} key={key}>
       <Link className="post-link" to={"posts/" + href}>
         <div className="post__img-container">
           {image ? (
@@ -126,9 +159,24 @@ export default function Post({ key, title, image, body, href, user, id }) {
           <button className="post__edit" onClick={handleOnOpenEdit}>
             Edit
           </button>
+
+          <button id={id} className="post__like" onClick={handleOnLike}>
+            Like 👍
+            <span name="likes-number">{isLiked ? likes + 1 : likes}</span>
+          </button>
         </div>
-      ) : null}
+      ) : (
+        <div className="post__text post__edit-section">
+          <button
+            id={id}
+            className={isLiked ? "post__like inactive" : "post__like"}
+            onClick={handleOnLike}
+          >
+            Like 👍
+            <span name="likes-number">{isLiked ? likes + 1 : likes}</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
-

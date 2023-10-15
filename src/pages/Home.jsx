@@ -116,20 +116,30 @@ export default function HomePage() {
       <Filters onChange={updateFilters} />
       <Search onSearch={onSearch} />
       <section className="posts">
-        {posts.map(({ id, title, media, body, author: { email } }) => {
-          const isUserPost = email === userEmail;
-          return (
-            <Post
-              key={id}
-              id={id}
-              href={id}
-              title={title}
-              image={media}
-              body={body}
-              user={isUserPost}
-            />
-          );
-        })}
+        {posts.map(
+          ({
+            id,
+            title,
+            media,
+            _count: { reactions },
+            body,
+            author: { email },
+          }) => {
+            const isUserPost = email === userEmail;
+            return (
+              <Post
+                key={id}
+                id={id}
+                href={id}
+                title={title}
+                image={media}
+                body={body}
+                user={isUserPost}
+                likes={reactions}
+              />
+            );
+          }
+        )}
       </section>
     </>
   );
