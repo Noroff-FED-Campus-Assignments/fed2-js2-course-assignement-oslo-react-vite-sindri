@@ -70,7 +70,7 @@ export default function PostPage() {
         </div>
         <img src={post?.media} alt="" />
 
-        <div className="center">
+        <div className="center margin">
           <Link className="button" to={`/edit/${post.id}`}>
             Edit
           </Link>
