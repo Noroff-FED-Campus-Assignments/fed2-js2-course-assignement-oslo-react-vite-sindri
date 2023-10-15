@@ -43,29 +43,28 @@
     .post__edit-section {
       display: flex;
       justify-content: end;
-      gap: 2rem;
+      gap: 1.2rem;
       .post__delete {
         color: red;
       }
     }
   }
-}
+  .inactive {
+    color: rgb(246, 242, 242);
+    background-color: rgb(182, 60, 60);
+  }
 
-.inactive {
-  color: rgb(246, 242, 242);
-  background-color: rgb(182, 60, 60);
-}
+  .editing {
+    display: grid;
+    gap: 1rem;
+  }
+  .editing__input {
+    border: 1px solid gray;
+  }
 
-.editing {
-  display: grid;
-  gap: 1rem;
-}
-.editing__input {
-  border: 1px solid gray;
-}
-
-.editing__submit {
-  background-color: #ffffff;
-  padding: 1rem;
-  height: 45px;
+  .editing__submit {
+    background-color: #ffffff;
+    padding: 1rem;
+    height: 45px;
+  }
 }

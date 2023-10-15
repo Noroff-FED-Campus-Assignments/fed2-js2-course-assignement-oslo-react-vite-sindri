@@ -16,7 +16,7 @@ export default function Header() {
   const showMenuItems = () => {
     if (menuOpen || isLargerThanTablet) {
       return NAVIGATION.map((item) => (
-        <li key={item.href}>
+        <li key={item.href} onClick={toggleMenu}>
           <Link to={item.href}>{item.label}</Link>
         </li>
       ));
