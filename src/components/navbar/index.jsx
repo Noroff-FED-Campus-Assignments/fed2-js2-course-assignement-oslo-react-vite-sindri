@@ -1,21 +1,29 @@
 import { Link } from "@tanstack/react-router";
 import { NAVIGATION } from "../../lib/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-
 import { useMediaQuery } from "react-responsive";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isLargerThanTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const accessToken = localStorage.getItem("access_token");
 
   const showMenuItems = () => {
     if (menuOpen || isLargerThanTablet) {
-      return NAVIGATION.map((item) => (
+      const showMenuItems = NAVIGATION.filter((item) => {
+        if (item.userMustBeLoggedIn) {
+          if (accessToken) {
+            return item;
+          }
+        } else {
+          return item;
+        }
+      });
+
+      return showMenuItems.map((item) => (
         <li key={item.href} onClick={toggleMenu}>
           <Link to={item.href}>{item.label}</Link>
         </li>
