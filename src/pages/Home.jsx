@@ -3,6 +3,7 @@ import { API_URL } from "../lib/constants";
 import Post from "../components/posts/postUi";
 import "../components/posts/index.scss";
 import Search from "../components/search";
+import ToTopBtn from "../components/to-top";
 import Filters from "../components/filters/Filters";
 import { useNavigate } from "@tanstack/react-router";
 
@@ -141,6 +142,7 @@ export default function HomePage() {
           }
         )}
       </section>
+      <ToTopBtn></ToTopBtn>
     </>
   );
 }
