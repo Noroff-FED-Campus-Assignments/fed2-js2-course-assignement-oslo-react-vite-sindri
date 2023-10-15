@@ -42,6 +42,10 @@ function LoginForm() {
 
       const data = await res.json();
 
+      if (data.statusCode > 300) {
+        throw new Error(data.status + ". Please try again");
+      }
+
       localStorage.setItem("access_token", data.accessToken);
       localStorage.setItem("user_email", data.email);
       setData(data);
