@@ -9,13 +9,3 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-Report:
-
-Tailwind CSS was the framework we chose for web styling because it has accessible features, it is user friendly and responsive.
-
-We divided the pages so each of us had one page to make, but we decided on the design together. We chose to use green as the main color, and chose to make the design simple.Then we coded individually, but checked each other's pages if there were any changes that needed to be done. There were some templates and code from Tailwind and Flowbite that we used, but we also added our own code to make it look like our design.
-
-Andrea made the homepage, Hallvard the profile page and Mikaela the login page. We used common components such as the header and footer across all pages for consistency.
-
-Initially, we had some difficulty with branches, pull requests, and getting our individual changes to work on the page. However, we eventually figured it out through teamwork and perseverance.

@@ -131,7 +131,7 @@ function LoginForm() {
               </div>
             </div>
 
-            <div>
+            <div className="flex justify-center w-full w-86">
               <button
                 type="submit"
                 className="flex w-full justify-center w-86 rounded-md bg-blue-300 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-200"
@@ -140,11 +140,10 @@ function LoginForm() {
               </button>
             </div>
 
-            <div className="flex justify-center">
-              <button type="button"></button>
+            <div className="flex justify-center w-full w-86 mt-4">
               <Link
                 to="/register"
-                className="w-86 w-full rounded-md bg-green-400 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 text-center focus-visible:outline-offset-2 focus-visible:outline-blue-200"
+                className="flex w-full justify-center w-86 rounded-md bg-green-400 px-3 py-4 text-lg font-bold leading-6 text-white shadow-sm hover:from-green-800 hover:to-green-700 focus-visible:outline focus-visible:outline-2 text-center focus-visible:outline-offset-2 focus-visible:outline-blue-200"
               >
                 Register
               </Link>
