@@ -12,10 +12,6 @@ Currently, two official plugins are available:
 
 Report:
 
-Tailwind CSS was the framework we chose for web styling because it has accessible features, it is user friendly and responsive.
+We chose to use the Noroff Api in our project. Then we made the design for both mobile and desktop. We chose a simple design and focused more on making each component work. Each of us had one page each that we coded, but we also helped each other if one of us got stuck or needed help. We had a few challenges with some of the components, and spent some time fixing the problems that occurred, and making sure everything worked the way it was supposed to.
 
-We divided the pages so each of us had one page to make, but we decided on the design together. We chose to use green as the main color, and chose to make the design simple.Then we coded individually, but checked each other's pages if there were any changes that needed to be done. There were some templates and code from Tailwind and Flowbite that we used, but we also added our own code to make it look like our design.
-
-Andrea made the homepage, Hallvard the profile page and Mikaela the login page. We used common components such as the header and footer across all pages for consistency.
-
-Initially, we had some difficulty with branches, pull requests, and getting our individual changes to work on the page. However, we eventually figured it out through teamwork and perseverance.
+This time it was easier with the pull requests and the branches, we also went through each other's codes and made a few changes if there were any mistakes or small changes.
