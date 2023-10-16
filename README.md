@@ -55,3 +55,5 @@ Mikaela:
 
 - register page
 - login page
+- Registered user can login
+- Used the noroff mail so the user can register profile
