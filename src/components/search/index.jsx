@@ -1,7 +1,6 @@
 export default function Search({ onSearch }) {
   const performSearch = (event) => {
     event.preventDefault();
-    console.log(event.target[0].value);
     onSearch(event.target[0].value);
   };
   return (

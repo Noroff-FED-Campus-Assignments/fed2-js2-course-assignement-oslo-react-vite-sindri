@@ -54,7 +54,6 @@ export default function PostPage() {
         Authorization: `Bearer ${accessToken}`,
       },
     }).then((response) => {
-      console.log(response);
       if (response.status < 300) {
         navigate({ to: "/" });
       }

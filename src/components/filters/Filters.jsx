@@ -9,7 +9,6 @@ export default function Filters({ onChange }) {
 
   const handleOnClick = function (e) {
     const clickedLabel = e.target.name;
-    console.log(clickedLabel);
     const updatedFilters = filters.map((filter) => {
       return {
         ...filter,
