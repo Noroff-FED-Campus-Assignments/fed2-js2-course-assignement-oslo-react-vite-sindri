@@ -1,0 +1,25 @@
+.to-top-container {
+  position: fixed;
+  width: 710px;
+  max-width: calc(100vw - 10px);
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  .to-top {
+    background-color: #53a1da;
+    pointer-events: all;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: hsl(205, 65%, 39%);
+    }
+  }
+}
