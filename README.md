@@ -9,3 +9,8 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Report :
+We chose to use the Noroff Api in our project. Then we made the design for both mobile and desktop. We chose a simple design and focused more on making each component work. Each of us had one page each that we coded, but we also helped each other if one of us got stuck or needed help. We had a few challenges with some of the components, and spent some time fixing the problems that occurred, and making sure everything worked the way it was supposed to.
+
+This time it was easier with the pull requests and the branches, we also went through each other's codes and made a few changes if there were any mistakes or small changes.
