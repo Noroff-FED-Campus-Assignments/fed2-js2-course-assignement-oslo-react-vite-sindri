@@ -66,7 +66,6 @@ button,
   }
 }
 
-/*Ny kode*/
 .header-container {
   display: grid;
   grid-template-columns: 50px auto;
@@ -95,6 +94,7 @@ button,
   .magnify {
     margin-left: 10px;
   }
+  a.logo,
   a.logo.active {
     font-family: "Black Ops One", cursive;
     font-size: 64px;
