@@ -37,7 +37,6 @@ export default function HomePage() {
 
         const CurrentUserEmail = localStorage.getItem("user_email");
         setUserEmail(CurrentUserEmail);
-        console.log("user email", userEmail);
 
         if (!accessToken || accessToken === "undefined") {
           navigate({ to: "/login" });

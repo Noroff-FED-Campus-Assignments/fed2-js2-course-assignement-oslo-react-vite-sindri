@@ -13,7 +13,6 @@ export default function CreatePage() {
     const text = event.target[1].value;
     const url = event.target[2].value;
     const tag = event.target[3].value;
-    console.log(title, text, url, tag);
     const accessToken = localStorage.getItem("access_token");
 
     fetch(`${API_URL}/posts`, {
@@ -29,7 +28,6 @@ export default function CreatePage() {
         Authorization: `Bearer ${accessToken}`,
       },
     }).then((response) => {
-      console.log(response.status);
       if (response.status < 300) {
         navigate({ to: "/" });
       }

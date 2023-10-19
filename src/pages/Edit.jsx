@@ -47,7 +47,6 @@ export default function EditPage() {
     const text = event.target[1].value;
     const url = event.target[2].value;
     const tag = event.target[3].value;
-    console.log(title, text, url, tag);
     const accessToken = localStorage.getItem("access_token");
     fetch(`${API_URL}/posts/${postId}`, {
       method: "PUT",

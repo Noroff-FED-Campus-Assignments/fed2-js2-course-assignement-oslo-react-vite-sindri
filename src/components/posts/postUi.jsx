@@ -64,7 +64,6 @@ export default function Post({
   const handleOnDelete = async function (e) {
     const accessToken = localStorage.getItem("access_token");
     const id = e.target.id;
-    console.log(e);
     const url = `${API_URL}/posts/${id}`;
     try {
       const response = await fetch(url, {
@@ -146,7 +145,7 @@ export default function Post({
             }`}</h2>
           )}
 
-          {!isDeleted ? <p>{bodyToUse}</p> : null}
+          {!isDeleted ? <p className="post__body">{bodyToUse}</p> : null}
         </div>
       </Link>
       {user && !isDeleted ? (
