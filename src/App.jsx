@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 import Navbar from "./components/navbar";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   return (

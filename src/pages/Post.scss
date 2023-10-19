@@ -1,0 +1,38 @@
+.post {
+  background: #e4dede;
+  margin: 10px;
+  border-radius: 1rem;
+  padding: 20px;
+
+  img {
+    max-width: 300px;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin: 30px auto;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 20px 0;
+    overflow-wrap: anywhere;
+  }
+  p {
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+  .delete-button {
+    background-color: red;
+  }
+  .center {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .post {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .margin {
+    margin-top: 42px;
+  }
+}
