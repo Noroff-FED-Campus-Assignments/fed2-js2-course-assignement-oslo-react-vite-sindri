@@ -145,7 +145,7 @@ export default function Post({
             }`}</h2>
           )}
 
-          {!isDeleted ? <p>{bodyToUse}</p> : null}
+          {!isDeleted ? <p className="post__body">{bodyToUse}</p> : null}
         </div>
       </Link>
       {user && !isDeleted ? (
